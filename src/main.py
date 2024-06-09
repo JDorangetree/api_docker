@@ -29,7 +29,7 @@ app.include_router(smokeTest.router, prefix="/smoke-test")
 @app.get('/')
 def health():
     return {
-        "message": "OK 🚀"
+        "message": "OK CICD"
     }
 
 
