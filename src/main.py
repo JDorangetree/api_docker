@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from . import smokeTest
+from fastapi_gcs import FGCSUpload
 
 #import debugpy
 
@@ -33,6 +34,16 @@ def health():
     }
 
 
-@app.post("/file/upload")
-def upload_file(file: UploadFile):
-    return {"filename": file.filename}
+@app.post("/upload-file/")
+async def create_upload_file(file: UploadFile):
+    return await FGCSUpload.file(
+    	project_id='invima-424416', 
+        bucket_name='invima-bucket-staging', 
+        file=file, 
+        file_path='my_data/test', 
+        maximum_size=2_097_152, 
+        allowed_extension= ['pdf'],
+        #file_name='my_file.png' #optional custom file name
+    )
+    
+    
