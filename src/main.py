@@ -3,10 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import smokeTest
 from fastapi_gcs import FGCSUpload
 
-#import debugpy
-
-#debugpy.listen(("0.0.0.0", 5678))
-# debugpy.wait_for_client()
 
 app = FastAPI()
 
@@ -38,9 +34,9 @@ def health():
 async def create_upload_file(file: UploadFile):
     return await FGCSUpload.file(
     	project_id='dockerapi-425716', 
-        bucket_name='documents_sta', 
+        bucket_name='documents_staging', 
         file=file, 
-        file_path='my_data/test', 
+        file_path='', 
         maximum_size=2_097_152, 
         allowed_extension= ['pdf'],
         #file_name='my_file.png' #optional custom file name
