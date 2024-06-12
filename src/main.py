@@ -36,7 +36,7 @@ async def create_upload_file(file: UploadFile):
     	project_id='dockerapi-425716', 
         bucket_name='documents_staging', 
         file=file, 
-        #file_path='', 
+        file_path='documents_staging', 
         maximum_size=2_097_152, 
         allowed_extension= ['pdf'],
         #file_name='my_file.png' #optional custom file name
