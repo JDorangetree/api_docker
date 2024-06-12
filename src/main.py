@@ -37,8 +37,8 @@ def health():
 @app.post("/upload-file/")
 async def create_upload_file(file: UploadFile):
     return await FGCSUpload.file(
-    	project_id='invima-424416', 
-        bucket_name='invima-bucket-staging', 
+    	project_id='dockerapi-425716', 
+        bucket_name='documents_sta', 
         file=file, 
         file_path='my_data/test', 
         maximum_size=2_097_152, 
